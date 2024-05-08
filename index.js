@@ -1,7 +1,9 @@
+#! /usr/bin/env node
 import inquirer from "inquirer";
-import chalk, { chalkStderr } from "chalk";
+import chalk from "chalk";
 let userPin = 1234;
 let myBailance = 20000;
+// question for user: enter pin
 let myPinAnswer = await inquirer.prompt([
     {
         name: "pin",
@@ -10,7 +12,8 @@ let myPinAnswer = await inquirer.prompt([
     },
 ]);
 if (myPinAnswer.pin === userPin) {
-    console.log(chalkStderr.greenBright("Your Pin Correct!!!"));
+    console.log(chalk.greenBright("Your Pin Correct!!!"));
+    // user apply opretion:what user want?
     let opretionAns = await inquirer.prompt([
         {
             name: "accountActivity",
@@ -19,8 +22,10 @@ if (myPinAnswer.pin === userPin) {
             message: "What You Want to do?",
         },
     ]);
+    // ***** For Check Balance *****
     if (opretionAns.accountActivity === "CheckBalance") {
         console.log(chalk.green(myBailance));
+        // ***** For WithDraw *****
     }
     else if (opretionAns.accountActivity === "WithDraw") {
         let withDrawAmountAns = await inquirer.prompt([
@@ -39,6 +44,7 @@ if (myPinAnswer.pin === userPin) {
                 chalk.yellow ` Your Current Balance:${chalk.green(myBailance)}`));
         }
     }
+    // ***** For Fast Cash *****
     else if (opretionAns.accountActivity === "FastCash") {
         let fastCashAns = await inquirer.prompt([
             {
@@ -57,6 +63,7 @@ if (myPinAnswer.pin === userPin) {
                 chalk.yellow ` Your Current Balance:${chalk.green(myBailance)}`));
         }
     }
+    //    ***** For Deposit *****
     else if (opretionAns.accountActivity === "Deposit") {
         let depositAmountAns = await inquirer.prompt([
             {
@@ -70,6 +77,7 @@ if (myPinAnswer.pin === userPin) {
         }
     }
 }
+//   ***** if Pin is Incorrect *****
 else {
     console.log(chalk.redBright("Your Pin InCorrect"));
 }

@@ -1,6 +1,6 @@
 {
   "name": "h77o_atm",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "ATM with inquirer and chalk.",
   "main": "index.js",
   "type": "module",
@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.3.0",
+    "h77o_atm": "^1.0.1",
     "inquirer": "^9.2.20"
   },
   "devDependencies": {
